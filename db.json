@@ -1,0 +1,79 @@
+{
+  "recluta": [
+    {
+      "id": "1",
+      "nombre": "Johan Carvajal",
+      "edad": "24",
+      "telefono": "3043729992",
+      "email": "johanbc144@gmail.com",
+      "direccion": "Calle 30 # 30 - 10 Giron",
+      "fNacimiento": "19-02-1999",
+      "cedula": "1098816599",
+      "fIngreso": "27-02-2023",
+      "idTeam": "1"
+    }
+  ],
+  "team": [
+    {
+      "id": "1",
+      "nombre": "Sputnik",
+      "trainer_asociado": "Miguel"
+    },
+    {
+      "id": "2",
+      "nombre": "Artemenis",
+      "trainer_asociado": "Vermen"
+    },
+    {
+      "id": "3",
+      "nombre": "Apolo",
+      "trainer_asociado": "Yolver"
+    }
+  ],
+  "skill": [
+    {
+      "id": "1",
+      "nombre": "HTML"
+    },
+    {
+      "id": "1",
+      "nombre": "CSS"
+    },
+    {
+      "id": "1",
+      "nombre": "JavaScript"
+    },
+    {
+      "id": "2",
+      "nombre": "PHP"
+    },
+    {
+      "id": "1",
+      "nombre": "React"
+    },
+    {
+      "id": "2",
+      "nombre": "Python"
+    }
+  ],
+  "modulo_skill": [
+    {
+      "id": "1",
+      "nombre": "Front-End",
+      "id_skill": "1"
+    },
+    {
+      "id": "2",
+      "nombre": "Back-End",
+      "id_skill": "2"
+    }
+  ],
+  "evaluacion": [
+    {
+      "id_recluta": "1",
+      "nota": "4.5",
+      "id_modulo": "1",
+      "id": 1
+    }
+  ]
+}
