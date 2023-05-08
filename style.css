@@ -1,0 +1,31 @@
+*{
+    padding: 0 auto;
+    margin: 0 auto;
+    color: aliceblue;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body{
+    background-image: url(images/bg.jpg);
+    background-size: cover;
+
+}
+
+
+
+
+#container {
+    background-color: rgba(53, 84, 111, 0.387);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    margin-bottom: 4rem;
+
+}
+
+#table{
+    margin: 2rem 0 0 0;
+    overflow: scroll;
+}
+
