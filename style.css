@@ -8,24 +8,38 @@
 body{
     background-image: url(images/bg.jpg);
     background-size: cover;
+    background-attachment: fixed;
+}
+
+#title{
+    background-image: url(images/banner.png);
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+    box-shadow: 0 0 5px rgba(0, 255, 221, 0.3);
+    border: solid 1px rgba(130, 255, 226, 0.35);
+    border-radius: 0.5rem;
+    overflow: scroll;
+    background-attachment: fixed;
+    padding-right: 2rem !important;
 
 }
 
-
-
-
 #container {
-    background-color: rgba(53, 84, 111, 0.387);
-    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.386);
     border-radius: 0.5rem;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    margin-bottom: 4rem;
+    backdrop-filter: blur(50px);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+    border: solid 1px rgba(255, 130, 130, 0.35);
+    margin-top: 7.2% !important;
+    margin-bottom: 7.2% !important;
+    padding-top: 2.5rem !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    padding-bottom: 1.5rem !important;
 
 }
 
 #table{
-    margin: 2rem 0 0 0;
     overflow: scroll;
 }
 
