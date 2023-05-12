@@ -1,18 +1,5 @@
 {
-  "recluta": [
-    {
-      "id": "1",
-      "nombre": "Johan Carvajal",
-      "edad": "24",
-      "telefono": "3043729992",
-      "email": "johanbc144@gmail.com",
-      "direccion": "Calle 30 # 30 - 10 Giron",
-      "fNacimiento": "19-02-1999",
-      "cedula": "1098816599",
-      "fIngreso": "27-02-2023",
-      "idTeam": "1"
-    }
-  ],
+  "recluta": [],
   "team": [
     {
       "id": "1",
