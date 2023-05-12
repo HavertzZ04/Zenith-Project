@@ -1,8 +1,10 @@
 export default function logic(){
 
+    let ws = new Worker("./worker.js")
     let selectedRow = null;
+    ws.postMessage({message: 'obtener'})
 
-    //show alerts
+
     function showAlert(message, className){
         const div = document.createElement("div");
         div.className = `alert alert-${className}`;
@@ -14,8 +16,7 @@ export default function logic(){
         setTimeout( () => document.querySelector(".alert").remove(), 3000);
 
     }
-
-    //Clear All
+    //limpiar campos
     function clearFields(){
         document.querySelector("#id").value = "";
         document.querySelector("#name").value = "";
@@ -29,10 +30,10 @@ export default function logic(){
         document.querySelector("#idTeam").value
     }
 
-    //Add Data
+    //agregar Datoss
     document.querySelector("#student-form").addEventListener("submit", (e) =>{
         e.preventDefault();
-        //Get form values
+
         const id = document.querySelector("#id").value
         const name = document.querySelector("#name").value;
         const edad = document.querySelector("#edad").value
@@ -44,10 +45,24 @@ export default function logic(){
         const fIngreso = document.querySelector("#fIngreso").value;
         const idTeam = document.querySelector("#idTeam").value;
 
-        //validate
+        let data = {
+            name,
+            edad,
+            telefono,
+            email,
+            direccion,
+            fNacimiento,
+            cedula,
+            fIngreso,
+            idTeam
+        }
+        
+        
         if(id == "" || name == "" || edad == ""  ||telefono == "" || email == "" || direccion == "" || fNacimiento == "" || cedula == "" || fIngreso == "" ||  idTeam == ""){
             showAlert("Por favor llene los campos", "danger")
         } else {
+            ws.postMessage({message: 'enviar', data: data})
+
             if(selectedRow == null){
                 const list = document.querySelector("#student-list");
                 const row = document.createElement("tr")
@@ -87,36 +102,56 @@ export default function logic(){
         }
     })
 
-    //Edit
-    document.querySelector("#student-list").addEventListener("click", (e) => {
-        let target = e.target;
-        if(target.classList.contains("edit")){
-            selectedRow = target.parentElement.parentElement;
-            document.querySelector("#id").value = selectedRow.children[0].textContent;
-            document.querySelector("#name").value = selectedRow.children[1].textContent;
-            document.querySelector("#edad").value = selectedRow.children[2].textContent;
-            document.querySelector("#telefono").value = selectedRow.children[3].textContent;
-            document.querySelector("#email").value = selectedRow.children[4].textContent;
-            document.querySelector("#direccion").value = selectedRow.children[5].textContent;
-            document.querySelector("#fNacimiento").value = selectedRow.children[6].textContent;
-            document.querySelector("#cedula").value = selectedRow.children[7].textContent;
-            document.querySelector("#fIngreso").value = selectedRow.children[8].textContent;
-            document.querySelector("#idTeam").value = selectedRow.children[9].textContent;
+    
+    ws.onmessage = (e) =>{
+        
+        let {message, data} = e.data;
+
+        if(message === 'users'){
+            const list = document.querySelector("#student-list");
+            const row = document.createElement("tr")
+            row.innerHTML = data;
+            list.appendChild(row);
+            selectedRow = null
         }
-    })
+    }
 
-    //Delete Data
-
+    //Editar Datos
     document.querySelector("#student-list").addEventListener("click", (e) =>{
-        let target = e.target;
-        if(target.classList.contains("delete")){
-            target.parentElement.parentElement.remove();
-            showAlert("Los datos del recluta fueron borrados", "danger")
-        }
-    })
+        if (e.target.classList.contains('edit')) {
+            e.preventDefault()
+            let target = e.target;
+            selectedRow = target.parentElement.parentElement;
+            let name = document.querySelector("#name").value 
+            let edad = document.querySelector("#edad").value
+            let telefono = document.querySelector("#telefono").value
+            let email = document.querySelector("#email").value
+            let direccion = document.querySelector("#direccion").value
+            let fNacimiento = document.querySelector("#fNacimiento").value
+            let cedula = document.querySelector("#cedula").value
+            let fIngreso = document.querySelector("#fIngreso").value
+            let idTeam = document.querySelector("#idTeam").value
+            let data = {
+                name,
+                edad,                
+                telefono,
+                email,
+                direccion,                
+                fNacimiento,
+                cedula,
+                fIngreso,
+                idTeam
+            }
+            let userId = e.target.closest('tr').querySelector('td[data-id]').getAttribute('data-id');
+            ws.postMessage({message : 'put', data : {userId, data}});
+        }})
 
+        //Borrar datos
 
-
-
-
+        document.querySelector("#student-list").addEventListener("click", (e) =>{
+            if (e.target.classList.contains('delete')) {
+                e.preventDefault()
+                let userId = e.target.closest('tr').querySelector('td[data-id]').getAttribute('data-id');
+                ws.postMessage({message : 'delete', data : userId});
+            }})
 }
