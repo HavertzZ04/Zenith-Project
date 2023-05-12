@@ -1,5 +1,18 @@
 {
-  "recluta": [],
+  "recluta": [
+    {
+      "name": "Johan",
+      "edad": "18",
+      "telefono": "3201458892",
+      "email": "johan@f.com",
+      "direccion": "sdsdsd",
+      "fNacimiento": "2023-05-16",
+      "cedula": "1",
+      "fIngreso": "2023-05-17",
+      "idTeam": "2",
+      "id": 1
+    }
+  ],
   "team": [
     {
       "id": "1",
